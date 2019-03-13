@@ -2,11 +2,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Summary
 <ul>
+<li>Event Handlers and "this" binding via arrow function</li>
 <li>Basics of Axios async / await </li>
 <li>Axios config file</li>
 <li>JS this pointer and how to bind it via arrow functions</li>
 <li>CSS tricks on how to tile list of images of different sizes</li>
-<li>Object destruction</li>
+<li>JS Object destructuring</li>
+<li>React DOM Refs system</li>
 </ul>
 
 
