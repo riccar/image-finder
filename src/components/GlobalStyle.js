@@ -16,7 +16,7 @@ img {
 
 body {
   font-family: "Lato", sans-serif;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 `;
 

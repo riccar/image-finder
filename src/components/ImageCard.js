@@ -1,65 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Card from './UI/Card'
 
 /**
- * Let the image card render itself
- * Then, reach into the DOM and figure out the height of the image
+ * After the image card render itself reach into the DOM and figure out its height
  * Set the image height on state to re-render component
- * When rendering assign a grid-row-end enough space so it's properly
- * rendered
+ * On the second render assign a grid-row-end enough space so it's properly
+ * spawned on multiple rows according to its height
  */
-class ImageCard extends React.Component {
+const ImageCard = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {spans: 0};
-    //Create a React Ref and assign it to the image element
-    this.imageRef = React.createRef();
-  }
+  const [spans, setSpans] = useState(0);
 
-  //Runs just after the component is rendered
-  componentDidMount() {
-    /**
-     * By the time this function run images may not be available yet.
-     * Hence attach a load event listener to it wait until the image
-     * is loaded in order to access its height
-     **/
-    //Add a simple JS load event listener
-    this.imageRef.current.addEventListener('load', this.setSpans);
-   
-  }
+  //useRef to hold the reference of an DOM object
+  const imageRef = useRef(null);
 
-  setSpans = () => {
-    const height = this.imageRef.current.clientHeight;
-    /**
-     * Divide image height between 10 to produce a proper 
-     * span. So if img is 10px height, its span becomes 1 so it 
-     * remains in one grid cell, but if its height is more than than 
-     * it spans becomes 2 or more so taller images are 
-     * spanned on multiple cells.
-     * Add plus one to the end to round always to the next available cell
-     * to avoid overlaps
-     */
-    const spans = Math.ceil(height / 10 + 1);
-    this.setState({spans});
-    //console.log(spans);
-  }
+  useEffect(() => {
+    const calcSpans = () => {
+      setSpans(calculateSpans(imageRef));
+    }
+    
+    //Add a JS load event listener
+    imageRef.current.addEventListener('load', calcSpans);
+  }, []); //Empty array to execute this useEffect only one time*/
 
-  render() {
+  
 
-    const { description, urls} = this.props.image;
+  const { description, urls} = props.image;
 
-    return (
-      <Card gridSpan={this.state.spans}>
-        <img 
-          ref={this.imageRef} 
-          alt={description}
-          src={urls.regular}
-        />
-      </Card>
-    );
-  }
+  return (
+    <Card gridSpan={spans}>
+      <img 
+        ref={imageRef} 
+        alt={description}
+        src={urls.regular}
+      />
+    </Card>
+  );
+
 }
 
 export default ImageCard;
+
+//Helper function
+const calculateSpans = (imageRef) => {
+  const height = imageRef.current.clientHeight;
+  //console.log(height);
+  /**
+   * Divide image height between 10 to produce a proper 
+   * span. So if img is 10px height, its span becomes 1 so it 
+   * remains in one grid cell, but if its height is more than than 
+   * it spans becomes 2 or more so taller images are 
+   * spanned on multiple cells.
+   * Add plus one to the end to round always to the next available cell
+   * to avoid overlaps
+   */
+  return Math.ceil(height / 10 + 1);
+  //console.log(spans);
+}
