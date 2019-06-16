@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Card from './UI/Card'
+
 /**
  * Let the image card render itself
  * Then, reach into the DOM and figure out the height of the image
@@ -24,7 +26,7 @@ class ImageCard extends React.Component {
      * is loaded in order to access its height
      **/
     //Add a simple JS load event listener
-    this.imageRef.current.addEventListener('load', this.setSpans)
+    this.imageRef.current.addEventListener('load', this.setSpans);
    
   }
 
@@ -41,7 +43,7 @@ class ImageCard extends React.Component {
      */
     const spans = Math.ceil(height / 10 + 1);
     this.setState({spans});
-    console.log(spans);
+    //console.log(spans);
   }
 
   render() {
@@ -49,13 +51,13 @@ class ImageCard extends React.Component {
     const { description, urls} = this.props.image;
 
     return (
-      <div style={{ gridRowEnd: `span ${this.state.spans}`}}>
+      <Card gridSpan={this.state.spans}>
         <img 
           ref={this.imageRef} 
           alt={description}
           src={urls.regular}
         />
-      </div>
+      </Card>
     );
   }
 }

@@ -1,38 +1,37 @@
 import React from 'react';
+
 import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
-import ImageList from './ImageList';
+import ImageGrid from './ImageGrid';
+import Container from './UI/Container'; 
+import GlobalStyle from './GlobalStyle';
 
 class App extends React.Component {
 
-  //Very handy to set arrays as empty to avoid null errors
+  //Set arrays as empty to avoid null errors
   state = { images: [] }
 
-  /**Since this is an async request, by the time the response
-   * is received, the onSearchSubmit is already exited and no longer
-   * available so we need a way to receive the response so it
-   * can be used and sent over to other components.
-   * One option is to use the promise .then(()=> {}) callback that will be
-   * executed when the response is received.
-   * A better option is to use Async Await keywords
+  /**Use async/await to wait for the response to be received 
+   * so it can be sent over to other components.
    * 
    * Use arrow function to ensure "this" references this component
    * and not the onSubmit that is calling the function
    */
   onSearchSubmit = async (term) => {
     const response =  await unsplash.get('/search/photos', {
-      params: { query: term },
+      params: { query: term, per_page: 8 }
     });
-
+    console.log(response.data);
     this.setState({ images: response.data.results });
   }
 
   render() {
     return ( 
-      <div className="ui container" style={{marginTop: '10px'}}>
+      <Container>
+        <GlobalStyle />
         <SearchBar onSubmit={this.onSearchSubmit} />
-        <ImageList images={this.state.images}/>
-      </div>
+        <ImageGrid images={this.state.images}/>
+      </Container>
     );
   }
 }

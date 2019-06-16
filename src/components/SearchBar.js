@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Segment from './UI/Segment';
+import Form from './UI/Form';
+
 class SearchBar extends React.Component {
 
   state = { term: ''};
@@ -31,17 +34,16 @@ class SearchBar extends React.Component {
   //state controls what is saved and shown in the input
   render() {
     return (
-      <div className="ui segment">
-        <form className="ui form" onSubmit={this.onFormSubmit}>
-          <div className="field">
-          <label>Image Search</label>
+      <Segment>
+        <Form onSubmit={this.onFormSubmit}>
+            <Form.FormLabel>Image Search</Form.FormLabel>
             <input 
               type="text"
               value={this.state.term} 
-              onChange={ e => this.setState({ term: e.target.value})} />
-          </div>
-        </form>
-      </div>
+              onChange={ e => this.setState({ term: e.target.value})} 
+            />
+        </Form>
+      </Segment>
     )
   }
 } 

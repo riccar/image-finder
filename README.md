@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <li>Basics of Axios async / await </li>
 <li>Axios config file</li>
 <li>JS this pointer and how to bind it via arrow functions</li>
-<li>CSS tricks on how to tile list of images of different sizes</li>
+<li>CSS row spawn based on image height in order to nicely tile them across the grid</li>
 <li>JS Object destructuring</li>
 <li>React DOM Refs system</li>
 </ul>
