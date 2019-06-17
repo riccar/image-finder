@@ -39,7 +39,7 @@ const App = () => {
     //On every new search, newPage = 1 and the image state is reset.
     if (newPage === 1) setImages(response.data.results);
     else setImages(prevState => [...prevState, ...response.data.results]);
-    console.log(response)
+    //console.log(response)
   }
 
   useEffect(() => {
