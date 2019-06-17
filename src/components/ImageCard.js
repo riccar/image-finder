@@ -23,21 +23,22 @@ const ImageCard = (props) => {
     
     //Add a JS load event listener
     imageRef.current.addEventListener('load', calcSpans);
+    let imgRef = imageRef.current;
     return () => {
-      imageRef.current.removeEventListener('load', calcSpans);
+      imgRef.removeEventListener('load', calcSpans);
     }
   }, []); //Empty array to execute this useEffect only one time*/
 
  /* const [imageRef, spans] =  useCalculateSpans();
   console.log(imageRef,spans);*/
   
-  const { description, urls} = props.image;
+  const { alt_description, urls } = props.image;
 
   return (
     <Card gridSpan={spans}>
       <img 
         ref={imageRef} 
-        alt={description}
+        alt={alt_description}
         src={urls.regular}
       />
     </Card>

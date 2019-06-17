@@ -5,7 +5,7 @@ import unsplash from '../api/unsplash';
 import SearchBar from './SearchBar';
 import ImageGrid from './ImageGrid';
 import Container from './UI/Container'; 
-import Loading from './UI/Loading';
+import Spinner from './UI/Spinner';
 
 import GlobalStyle from './GlobalStyle';
 
@@ -39,6 +39,7 @@ const App = () => {
     //On every new search, newPage = 1 and the image state is reset.
     if (newPage === 1) setImages(response.data.results);
     else setImages(prevState => [...prevState, ...response.data.results]);
+    console.log(response)
   }
 
   useEffect(() => {
@@ -53,7 +54,10 @@ const App = () => {
       <GlobalStyle />
       <SearchBar onSubmit={onSearchSubmit} />
       <ImageGrid images={images}/>
-      <Loading ref={ref}>--- Loading more images ---</Loading>
+      <div ref={ref}>
+        <Spinner  />
+      </div>
+      
 
     </Container>
   );
