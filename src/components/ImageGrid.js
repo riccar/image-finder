@@ -9,7 +9,11 @@ const ImageGrid = props => {
     return <ImageCard key={image.id} image={image} />
   });
 
-  return <Grid>{images}</Grid>
+  return (
+    <>
+      <Grid>{images}</Grid>
+    </>
+  )
     
 };
 

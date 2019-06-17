@@ -14,7 +14,7 @@ const SearchBar = (props) => {
   */
   const onFormSubmit = e => {
     e.preventDefault();
-    props.onSubmit(term);
+    props.onSubmit(term, 1);
   }
 
   /*onFormSubmit called via onSubmit event should not have parenthesis 

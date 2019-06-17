@@ -2,13 +2,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Summary
 <ul>
-<li>Event Handlers and "this" binding via arrow function</li>
-<li>Basics of Axios async / await </li>
-<li>Axios config file</li>
-<li>JS this pointer and how to bind it via arrow functions</li>
+<li>Pull images from Unspash using Axios async / await </li>
+<li>Using styled-components to style and create UI reusable components</li>
 <li>CSS row spawn based on image height in order to nicely tile them across the grid</li>
-<li>JS Object destructuring</li>
-<li>React DOM Refs system</li>
+<li>Use of React Hooks</li>
+<li>Use of react-interaction-observer to pulling more images when scrolling to the end of the page (infinite scrolling).</li>
+<li>Use of React memo to avoid re-render grid item components when more items are pulled from the API server</li>
 </ul>
 
 

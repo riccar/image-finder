@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
+//import useCalculateSpans from './helpers/useCalculateSpans';
 
 import Card from './UI/Card'
 
@@ -22,10 +23,14 @@ const ImageCard = (props) => {
     
     //Add a JS load event listener
     imageRef.current.addEventListener('load', calcSpans);
+    return () => {
+      imageRef.current.removeEventListener('load', calcSpans);
+    }
   }, []); //Empty array to execute this useEffect only one time*/
 
+ /* const [imageRef, spans] =  useCalculateSpans();
+  console.log(imageRef,spans);*/
   
-
   const { description, urls} = props.image;
 
   return (
@@ -40,12 +45,11 @@ const ImageCard = (props) => {
 
 }
 
-export default ImageCard;
+export default memo(ImageCard);
 
 //Helper function
 const calculateSpans = (imageRef) => {
   const height = imageRef.current.clientHeight;
-  //console.log(height);
   /**
    * Divide image height between 10 to produce a proper 
    * span. So if img is 10px height, its span becomes 1 so it 
@@ -56,5 +60,5 @@ const calculateSpans = (imageRef) => {
    * to avoid overlaps
    */
   return Math.ceil(height / 10 + 1);
-  //console.log(spans);
+  
 }
