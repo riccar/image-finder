@@ -32,7 +32,7 @@ const ImageCard = (props) => {
  /* const [imageRef, spans] =  useCalculateSpans();
   console.log(imageRef,spans);*/
   
-  const { alt_description, urls } = props.image;
+  const { alt_description, urls, user } = props.image;
 
   return (
     <Card gridSpan={spans}>
@@ -41,6 +41,10 @@ const ImageCard = (props) => {
         alt={alt_description}
         src={urls.regular}
       />
+      <Card.Text>
+        <p>{alt_description}</p>
+        <p>By {user.name}</p>
+      </Card.Text>
     </Card>
   );
 

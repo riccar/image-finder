@@ -34,20 +34,6 @@ const PulseBubble = styled.div`
 }
 `;
 
-/*.pulse-bubble {
- 
-}
-
-.pulse-bubble-1 {
-    animation: pulse .4s ease 0s infinite alternate;
-}
-.pulse-bubble-2 {
-    animation: pulse .4s ease .2s infinite alternate;
-}
-.pulse-bubble-3 {
-    animation: pulse .4s ease .4s infinite alternate;
-}*/
-
 const Spinner = () => {
 
   return (
