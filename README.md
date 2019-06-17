@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <li>Using styled-components to style and create UI reusable components</li>
 <li>CSS row spawn based on image height in order to nicely tile them across the grid</li>
 <li>Use of React Hooks</li>
-<li>Use of react-interaction-observer to pulling more images when scrolling to the end of the page (infinite scrolling).</li>
+<li>Use of react-interaction-observer to pull more images when scrolling to the end of the page (infinite scrolling).</li>
 <li>Use of React memo to avoid re-render grid item components when more items are pulled from the API server</li>
 </ul>
 
